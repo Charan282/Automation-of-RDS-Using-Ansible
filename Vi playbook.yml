@@ -1,0 +1,18 @@
+--- 
+- name: Provision RDS instances in AWS
+  hosts: localhost
+  gather_facts: False
+  tasks:
+   - name: Create RDS instance
+     rds:
+       command: create
+       instance_name: new-database
+       db_engine: MySQL
+       size: 10
+       instance_type: db.t2.micro
+       username: myrdsuser
+       password: myrdspassword
+       region: us-east-1
+       tags:
+         Environment: freetier
+         Application: cms
